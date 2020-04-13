@@ -30,6 +30,7 @@ RUN apt-get update \
     zlib1g-dev \
     zip \
     && cd /usr/local/src/SoftEtherVPN_Stable-* \
+    && sed 's/StrCmpi(region, "JP") == 0 || StrCmpi(region, "CN") == 0/false/' -i src/Cedar/Server.c \
     && ./configure \
     && make \
     && make install \
